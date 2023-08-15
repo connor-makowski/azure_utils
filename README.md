@@ -5,10 +5,7 @@
 Azure Utilities for python
 
 ## Documentation
-[Technical documentation](https://connor-makowski.github.io/azure_utils/index.html) can be found [here](https://connor-makowski.github.io/azure_utils/index.html).
-
-## Examples
-- [Containers](https://github.com/connor-makowski/azure_utils/tree/main/notebooks/containers/)
+[Technical documentation](https://connor-makowski.github.io/azure_utils/blob_storage.html) can be found [here](https://connor-makowski.github.io/azure_utils/blob_storage.html).
 
 ## Setup
 
@@ -40,9 +37,6 @@ Recommended (but Optional) -> Expand this section to setup and activate a virtua
 ```
 pip install azure_utils
 ```
-
-<!-- ## Examples
-See all of the examples [here](https://github.com/connor-makowski/azure_utils/tree/main/notebooks/). -->
 
 ### Basic Usage
 ```py
