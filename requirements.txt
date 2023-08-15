@@ -1,0 +1,8 @@
+autoflake==2.2.0
+black==23.7.0
+jupyter==1.0.0
+pdoc3==0.10.0
+python-decouple==3.8
+twine==4.0.0
+.
+

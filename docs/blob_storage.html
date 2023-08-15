@@ -1,0 +1,1645 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>azure_utils.blob_storage API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>azure_utils.blob_storage</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os, pathlib
+from azure.storage.blob import ContainerClient
+
+from azure_utils.utils.blob_storage_utils import AZBlob, MetaBlob, validate_path
+
+
+class AZContainer:
+    def __init__(self, account_url: str, account_key: str, container_name: str):
+        &#34;&#34;&#34;
+        Function:
+
+        - Creates an AZContainer object
+
+        Parameters:
+
+        - `account_url` (str): The account url
+        - `account_key` (str): The account key
+        - `container_name` (str): The container name
+
+        Returns:
+
+        - The AZContainer object
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        print(mycontainer.list_files(remote_folderpath=&#39;/path/to/folder/&#39;)
+        # This will print a list of all files in the remote folder `/path/to/folder/`
+        ```
+        &#34;&#34;&#34;
+        self.client = ContainerClient(
+            account_url=account_url,
+            container_name=container_name,
+            credential=account_key,
+        )
+
+    def list_files(self, remote_folderpath: str) -&gt; list:
+        &#34;&#34;&#34;
+        Function:
+
+        - Lists all files in a remote folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+
+        Returns:
+
+        - A list of all files (as strings) in the remote folder (including subfolders)
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        print(mycontainer.list_files(remote_folderpath=&#39;/path/to/folder/&#39;)
+        # This will print a list of all files in the remote folder `/path/to/folder/`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        return [
+            i.name
+            for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+        ]
+
+    def upload_file(
+        self, remote_filepath: str, local_filepath: str, overwrite: bool = False
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Uploads a file from local to remote
+
+        Parameters:
+
+        - `remote_filepath` (str): The path to the remote file
+        - `local_filepath` (str): The path to the local file
+        - `overwrite` (bool): Whether to overwrite the remote file if it already exists
+            - Optional: Defaults to `False`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.upload_file(
+            remote_filepath=&#39;/path/to/file.txt&#39;,
+            local_filepath=&#39;/path/to/file.txt&#39;,
+            overwrite=True
+        )
+        # This will upload the local file `/path/to/file.txt` to the remote file `/path/to/file.txt`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_filepath, is_remote=False, is_folder=False)
+        validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        with open(local_filepath, &#34;rb&#34;) as data:
+            blob = MetaBlob(
+                blob_client=self.client.upload_blob(
+                    name=remote_filepath, data=data, overwrite=overwrite
+                ),
+                filepath=local_filepath,
+            )
+        blob.update_meta()
+
+    def download_file(
+        self,
+        remote_filepath: str,
+        local_filepath: str,
+        overwrite: bool = False,
+        smart_sync: bool = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Downloads a file from remote to local
+
+        Parameters:
+
+        - `remote_filepath` (str): The path to the remote file
+        - `local_filepath` (str): The path to the local file
+        - `overwrite` (bool): Whether to overwrite the local file if it already exists
+            - Optional: Defaults to `False`
+        - `smart_sync` (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file
+            - Optional: Defaults to `False`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.download_file(
+            remote_filepath=&#39;/path/to/file.txt&#39;,
+            local_filepath=&#39;/path/to/file.txt&#39;,
+            overwrite=True,
+            smart_sync=True
+        )
+        # This will download the remote file `/path/to/file.txt` to the local file `/path/to/file.txt`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_filepath, is_remote=False, is_folder=False)
+        validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        blob = MetaBlob(
+            blob_client=self.client.get_blob_client(blob=remote_filepath),
+            filepath=local_filepath,
+            smart_sync=smart_sync,
+            overwrite=overwrite,
+        )
+        blob.download()
+
+    def delete_file(self, remote_filepath: str) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Deletes a file from remote
+
+        Parameters:
+
+        - `remote_filepath` (str): The path to the remote file
+
+        Returns:
+
+        - `None`
+
+        Example:
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.delete_file(remote_filepath=&#39;/path/to/file.txt&#39;)
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        blob = AZBlob(
+            blob_client=self.client.get_blob_client(blob=remote_filepath)
+        )
+        blob.delete()
+
+    def sync_to_local(
+        self,
+        remote_folderpath: str,
+        local_folderpath: str,
+        overwrite: bool = False,
+        smart_sync: bool = False,
+        removal: bool = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Sync all files from a remote folder to a local folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+        - `local_folderpath` (str): The path to the local folder
+        - `overwrite` (bool): Whether to overwrite the local file if it already exists
+            - Optional: Defaults to `False`
+        - `smart_sync` (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file
+            - Optional: Defaults to `False`
+        - `removal` (bool): Whether to remove local files that do not exist in the remote folder
+            - Optional: Defaults to `False`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.sync_to_local(
+            remote_folderpath=&#39;/path/to/folder/&#39;,
+            local_folderpath=&#39;/path/to/folder/&#39;,
+            overwrite=True,
+            smart_sync=True,
+            removal=True
+        )
+        # This will sync the remote folder `/path/to/folder/` to the local folder `/path/to/folder/`
+        # It will also remove any local files that do not exist in the remote folder
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        blobs = [
+            i
+            for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+        ]
+        for blobProperty in blobs:
+            blob = MetaBlob(
+                blob_client=None,
+                filepath=local_folderpath
+                + blobProperty.name.replace(remote_folderpath, &#34;&#34;),
+                smart_sync=smart_sync,
+                remote_etag=blobProperty.etag,
+                overwrite=overwrite,
+            )
+            if blob.block_download:
+                continue
+            blob.blob_client = self.client.get_blob_client(
+                blob=blobProperty.name
+            )
+            blob.download()
+        if removal:
+            posix_folderpath = str(pathlib.PurePosixPath(local_folderpath))
+            if posix_folderpath == &#34;/&#34;:
+                raise Exception(&#34;Cannot do removal in the root folder&#34;)
+            storage_filepaths = set(
+                [i.name.replace(remote_folderpath, &#34;&#34;) for i in blobs]
+            )
+            for local_filepath in [
+                str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+            ]:
+                posix_filepath = str(pathlib.PurePosixPath(local_filepath))
+                if (
+                    posix_filepath.replace(posix_folderpath, &#34;&#34;).replace(
+                        &#34;.meta.&#34;, &#34;&#34;
+                    )
+                    not in storage_filepaths
+                ):
+                    os.remove(local_filepath)
+
+    def sync_to_remote(
+        self,
+        remote_folderpath: str,
+        local_folderpath: str,
+        overwrite: bool = False,
+        omissions: list = [&#34;.meta.&#34;],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Sync all files from a local folder to a remote folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+        - `local_folderpath` (str): The path to the local folder
+        - `overwrite` (bool): Whether to overwrite the remote file if it already exists
+            - Optional: Defaults to `False`
+        - `omissions` (list): A list of strings to omit from the upload
+            - Optional: Defaults to `[&#39;.meta.&#39;]`
+
+        Returns:
+
+        - `None`
+
+        Example:
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.sync_to_remote(
+            remote_folderpath=&#39;/path/to/folder/&#39;,
+            local_folderpath=&#39;/path/to/folder/&#39;,
+        )
+        # This will sync the local folder `/path/to/folder/` to the remote folder `/path/to/folder/`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        local_filepaths = [
+            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        ]
+        local_filepaths = [
+            i for i in local_filepaths if not any([j in i for j in omissions])
+        ]
+        for local_filepath in local_filepaths:
+            self.upload_file(
+                remote_filepath=remote_folderpath
+                + local_filepath.replace(local_folderpath, &#34;&#34;),
+                local_filepath=local_filepath,
+                overwrite=overwrite,
+            )
+
+    def delete_folder(self, remote_folderpath: str) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Deletes all files in a remote folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.delete_folder(remote_folderpath=&#39;/path/to/folder/&#39;)
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        storage_filenames = self.client.list_blob_names(
+            name_starts_with=remote_folderpath
+        )
+        for filename in storage_filenames:
+            blob = AZBlob(
+                blob_client=self.client.get_blob_client(blob=filename)
+            )
+            blob.delete()
+
+    def clear_local_meta(
+        self, local_folderpath: str, includsions: list = [&#34;.meta.&#34;]
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Deletes all meta files in a local folder
+
+        Parameters:
+
+        - `local_folderpath` (str): The path to the local folder
+        - `includsions` (list): A list of strings to include in the deletion
+            - Optional: Defaults to `[&#39;.meta.&#39;]`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.clear_local_meta(local_folderpath=&#39;/path/to/folder/&#39;)
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+        local_filepaths = [
+            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        ]
+        for filepath in [
+            i for i in local_filepaths if any([j in i for j in includsions])
+        ]:
+            os.remove(filepath)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="azure_utils.blob_storage.AZContainer"><code class="flex name class">
+<span>class <span class="ident">AZContainer</span></span>
+<span>(</span><span>account_url: str, account_key: str, container_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Creates an AZContainer object</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>account_url</code> (str): The account url</li>
+<li><code>account_key</code> (str): The account key</li>
+<li><code>container_name</code> (str): The container name</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li>The AZContainer object</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
+# This will print a list of all files in the remote folder `/path/to/folder/`
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AZContainer:
+    def __init__(self, account_url: str, account_key: str, container_name: str):
+        &#34;&#34;&#34;
+        Function:
+
+        - Creates an AZContainer object
+
+        Parameters:
+
+        - `account_url` (str): The account url
+        - `account_key` (str): The account key
+        - `container_name` (str): The container name
+
+        Returns:
+
+        - The AZContainer object
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        print(mycontainer.list_files(remote_folderpath=&#39;/path/to/folder/&#39;)
+        # This will print a list of all files in the remote folder `/path/to/folder/`
+        ```
+        &#34;&#34;&#34;
+        self.client = ContainerClient(
+            account_url=account_url,
+            container_name=container_name,
+            credential=account_key,
+        )
+
+    def list_files(self, remote_folderpath: str) -&gt; list:
+        &#34;&#34;&#34;
+        Function:
+
+        - Lists all files in a remote folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+
+        Returns:
+
+        - A list of all files (as strings) in the remote folder (including subfolders)
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        print(mycontainer.list_files(remote_folderpath=&#39;/path/to/folder/&#39;)
+        # This will print a list of all files in the remote folder `/path/to/folder/`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        return [
+            i.name
+            for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+        ]
+
+    def upload_file(
+        self, remote_filepath: str, local_filepath: str, overwrite: bool = False
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Uploads a file from local to remote
+
+        Parameters:
+
+        - `remote_filepath` (str): The path to the remote file
+        - `local_filepath` (str): The path to the local file
+        - `overwrite` (bool): Whether to overwrite the remote file if it already exists
+            - Optional: Defaults to `False`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.upload_file(
+            remote_filepath=&#39;/path/to/file.txt&#39;,
+            local_filepath=&#39;/path/to/file.txt&#39;,
+            overwrite=True
+        )
+        # This will upload the local file `/path/to/file.txt` to the remote file `/path/to/file.txt`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_filepath, is_remote=False, is_folder=False)
+        validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        with open(local_filepath, &#34;rb&#34;) as data:
+            blob = MetaBlob(
+                blob_client=self.client.upload_blob(
+                    name=remote_filepath, data=data, overwrite=overwrite
+                ),
+                filepath=local_filepath,
+            )
+        blob.update_meta()
+
+    def download_file(
+        self,
+        remote_filepath: str,
+        local_filepath: str,
+        overwrite: bool = False,
+        smart_sync: bool = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Downloads a file from remote to local
+
+        Parameters:
+
+        - `remote_filepath` (str): The path to the remote file
+        - `local_filepath` (str): The path to the local file
+        - `overwrite` (bool): Whether to overwrite the local file if it already exists
+            - Optional: Defaults to `False`
+        - `smart_sync` (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file
+            - Optional: Defaults to `False`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.download_file(
+            remote_filepath=&#39;/path/to/file.txt&#39;,
+            local_filepath=&#39;/path/to/file.txt&#39;,
+            overwrite=True,
+            smart_sync=True
+        )
+        # This will download the remote file `/path/to/file.txt` to the local file `/path/to/file.txt`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_filepath, is_remote=False, is_folder=False)
+        validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        blob = MetaBlob(
+            blob_client=self.client.get_blob_client(blob=remote_filepath),
+            filepath=local_filepath,
+            smart_sync=smart_sync,
+            overwrite=overwrite,
+        )
+        blob.download()
+
+    def delete_file(self, remote_filepath: str) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Deletes a file from remote
+
+        Parameters:
+
+        - `remote_filepath` (str): The path to the remote file
+
+        Returns:
+
+        - `None`
+
+        Example:
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.delete_file(remote_filepath=&#39;/path/to/file.txt&#39;)
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        blob = AZBlob(
+            blob_client=self.client.get_blob_client(blob=remote_filepath)
+        )
+        blob.delete()
+
+    def sync_to_local(
+        self,
+        remote_folderpath: str,
+        local_folderpath: str,
+        overwrite: bool = False,
+        smart_sync: bool = False,
+        removal: bool = False,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Sync all files from a remote folder to a local folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+        - `local_folderpath` (str): The path to the local folder
+        - `overwrite` (bool): Whether to overwrite the local file if it already exists
+            - Optional: Defaults to `False`
+        - `smart_sync` (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file
+            - Optional: Defaults to `False`
+        - `removal` (bool): Whether to remove local files that do not exist in the remote folder
+            - Optional: Defaults to `False`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.sync_to_local(
+            remote_folderpath=&#39;/path/to/folder/&#39;,
+            local_folderpath=&#39;/path/to/folder/&#39;,
+            overwrite=True,
+            smart_sync=True,
+            removal=True
+        )
+        # This will sync the remote folder `/path/to/folder/` to the local folder `/path/to/folder/`
+        # It will also remove any local files that do not exist in the remote folder
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        blobs = [
+            i
+            for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+        ]
+        for blobProperty in blobs:
+            blob = MetaBlob(
+                blob_client=None,
+                filepath=local_folderpath
+                + blobProperty.name.replace(remote_folderpath, &#34;&#34;),
+                smart_sync=smart_sync,
+                remote_etag=blobProperty.etag,
+                overwrite=overwrite,
+            )
+            if blob.block_download:
+                continue
+            blob.blob_client = self.client.get_blob_client(
+                blob=blobProperty.name
+            )
+            blob.download()
+        if removal:
+            posix_folderpath = str(pathlib.PurePosixPath(local_folderpath))
+            if posix_folderpath == &#34;/&#34;:
+                raise Exception(&#34;Cannot do removal in the root folder&#34;)
+            storage_filepaths = set(
+                [i.name.replace(remote_folderpath, &#34;&#34;) for i in blobs]
+            )
+            for local_filepath in [
+                str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+            ]:
+                posix_filepath = str(pathlib.PurePosixPath(local_filepath))
+                if (
+                    posix_filepath.replace(posix_folderpath, &#34;&#34;).replace(
+                        &#34;.meta.&#34;, &#34;&#34;
+                    )
+                    not in storage_filepaths
+                ):
+                    os.remove(local_filepath)
+
+    def sync_to_remote(
+        self,
+        remote_folderpath: str,
+        local_folderpath: str,
+        overwrite: bool = False,
+        omissions: list = [&#34;.meta.&#34;],
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Sync all files from a local folder to a remote folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+        - `local_folderpath` (str): The path to the local folder
+        - `overwrite` (bool): Whether to overwrite the remote file if it already exists
+            - Optional: Defaults to `False`
+        - `omissions` (list): A list of strings to omit from the upload
+            - Optional: Defaults to `[&#39;.meta.&#39;]`
+
+        Returns:
+
+        - `None`
+
+        Example:
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.sync_to_remote(
+            remote_folderpath=&#39;/path/to/folder/&#39;,
+            local_folderpath=&#39;/path/to/folder/&#39;,
+        )
+        # This will sync the local folder `/path/to/folder/` to the remote folder `/path/to/folder/`
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        local_filepaths = [
+            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        ]
+        local_filepaths = [
+            i for i in local_filepaths if not any([j in i for j in omissions])
+        ]
+        for local_filepath in local_filepaths:
+            self.upload_file(
+                remote_filepath=remote_folderpath
+                + local_filepath.replace(local_folderpath, &#34;&#34;),
+                local_filepath=local_filepath,
+                overwrite=overwrite,
+            )
+
+    def delete_folder(self, remote_folderpath: str) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Deletes all files in a remote folder
+
+        Parameters:
+
+        - `remote_folderpath` (str): The path to the remote folder
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.delete_folder(remote_folderpath=&#39;/path/to/folder/&#39;)
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+        storage_filenames = self.client.list_blob_names(
+            name_starts_with=remote_folderpath
+        )
+        for filename in storage_filenames:
+            blob = AZBlob(
+                blob_client=self.client.get_blob_client(blob=filename)
+            )
+            blob.delete()
+
+    def clear_local_meta(
+        self, local_folderpath: str, includsions: list = [&#34;.meta.&#34;]
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        Function:
+
+        - Deletes all meta files in a local folder
+
+        Parameters:
+
+        - `local_folderpath` (str): The path to the local folder
+        - `includsions` (list): A list of strings to include in the deletion
+            - Optional: Defaults to `[&#39;.meta.&#39;]`
+
+        Returns:
+
+        - `None`
+
+        Example:
+
+        ```python
+        from azure_utils.blob_storage import AZContainer
+        mycontainer = AZContainer(
+            account_url=&#34;my_account_url&#34;,
+            account_key=&#34;my_account_key&#34;,
+            container_name=&#34;my_container&#34;
+        )
+        mycontainer.clear_local_meta(local_folderpath=&#39;/path/to/folder/&#39;)
+        ```
+        &#34;&#34;&#34;
+        validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+        local_filepaths = [
+            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        ]
+        for filepath in [
+            i for i in local_filepaths if any([j in i for j in includsions])
+        ]:
+            os.remove(filepath)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="azure_utils.blob_storage.AZContainer.clear_local_meta"><code class="name flex">
+<span>def <span class="ident">clear_local_meta</span></span>(<span>self, local_folderpath: str, includsions: list = ['.meta.']) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Deletes all meta files in a local folder</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>local_folderpath</code> (str): The path to the local folder</li>
+<li><code>includsions</code> (list): A list of strings to include in the deletion<ul>
+<li>Optional: Defaults to <code>['.meta.']</code></li>
+</ul>
+</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.clear_local_meta(local_folderpath='/path/to/folder/')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def clear_local_meta(
+    self, local_folderpath: str, includsions: list = [&#34;.meta.&#34;]
+) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Deletes all meta files in a local folder
+
+    Parameters:
+
+    - `local_folderpath` (str): The path to the local folder
+    - `includsions` (list): A list of strings to include in the deletion
+        - Optional: Defaults to `[&#39;.meta.&#39;]`
+
+    Returns:
+
+    - `None`
+
+    Example:
+
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.clear_local_meta(local_folderpath=&#39;/path/to/folder/&#39;)
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+    local_filepaths = [
+        str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+    ]
+    for filepath in [
+        i for i in local_filepaths if any([j in i for j in includsions])
+    ]:
+        os.remove(filepath)</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.delete_file"><code class="name flex">
+<span>def <span class="ident">delete_file</span></span>(<span>self, remote_filepath: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Deletes a file from remote</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_filepath</code> (str): The path to the remote file</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.delete_file(remote_filepath='/path/to/file.txt')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_file(self, remote_filepath: str) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Deletes a file from remote
+
+    Parameters:
+
+    - `remote_filepath` (str): The path to the remote file
+
+    Returns:
+
+    - `None`
+
+    Example:
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.delete_file(remote_filepath=&#39;/path/to/file.txt&#39;)
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+    blob = AZBlob(
+        blob_client=self.client.get_blob_client(blob=remote_filepath)
+    )
+    blob.delete()</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.delete_folder"><code class="name flex">
+<span>def <span class="ident">delete_folder</span></span>(<span>self, remote_folderpath: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Deletes all files in a remote folder</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_folderpath</code> (str): The path to the remote folder</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.delete_folder(remote_folderpath='/path/to/folder/')
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete_folder(self, remote_folderpath: str) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Deletes all files in a remote folder
+
+    Parameters:
+
+    - `remote_folderpath` (str): The path to the remote folder
+
+    Returns:
+
+    - `None`
+
+    Example:
+
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.delete_folder(remote_folderpath=&#39;/path/to/folder/&#39;)
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+    storage_filenames = self.client.list_blob_names(
+        name_starts_with=remote_folderpath
+    )
+    for filename in storage_filenames:
+        blob = AZBlob(
+            blob_client=self.client.get_blob_client(blob=filename)
+        )
+        blob.delete()</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.download_file"><code class="name flex">
+<span>def <span class="ident">download_file</span></span>(<span>self, remote_filepath: str, local_filepath: str, overwrite: bool = False, smart_sync: bool = False) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Downloads a file from remote to local</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_filepath</code> (str): The path to the remote file</li>
+<li><code>local_filepath</code> (str): The path to the local file</li>
+<li><code>overwrite</code> (bool): Whether to overwrite the local file if it already exists<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+<li><code>smart_sync</code> (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.download_file(
+    remote_filepath='/path/to/file.txt',
+    local_filepath='/path/to/file.txt',
+    overwrite=True,
+    smart_sync=True
+)
+# This will download the remote file `/path/to/file.txt` to the local file `/path/to/file.txt`
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download_file(
+    self,
+    remote_filepath: str,
+    local_filepath: str,
+    overwrite: bool = False,
+    smart_sync: bool = False,
+) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Downloads a file from remote to local
+
+    Parameters:
+
+    - `remote_filepath` (str): The path to the remote file
+    - `local_filepath` (str): The path to the local file
+    - `overwrite` (bool): Whether to overwrite the local file if it already exists
+        - Optional: Defaults to `False`
+    - `smart_sync` (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file
+        - Optional: Defaults to `False`
+
+    Returns:
+
+    - `None`
+
+    Example:
+
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.download_file(
+        remote_filepath=&#39;/path/to/file.txt&#39;,
+        local_filepath=&#39;/path/to/file.txt&#39;,
+        overwrite=True,
+        smart_sync=True
+    )
+    # This will download the remote file `/path/to/file.txt` to the local file `/path/to/file.txt`
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=local_filepath, is_remote=False, is_folder=False)
+    validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+    blob = MetaBlob(
+        blob_client=self.client.get_blob_client(blob=remote_filepath),
+        filepath=local_filepath,
+        smart_sync=smart_sync,
+        overwrite=overwrite,
+    )
+    blob.download()</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.list_files"><code class="name flex">
+<span>def <span class="ident">list_files</span></span>(<span>self, remote_folderpath: str) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Lists all files in a remote folder</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_folderpath</code> (str): The path to the remote folder</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li>A list of all files (as strings) in the remote folder (including subfolders)</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
+# This will print a list of all files in the remote folder `/path/to/folder/`
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def list_files(self, remote_folderpath: str) -&gt; list:
+    &#34;&#34;&#34;
+    Function:
+
+    - Lists all files in a remote folder
+
+    Parameters:
+
+    - `remote_folderpath` (str): The path to the remote folder
+
+    Returns:
+
+    - A list of all files (as strings) in the remote folder (including subfolders)
+
+    Example:
+
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    print(mycontainer.list_files(remote_folderpath=&#39;/path/to/folder/&#39;)
+    # This will print a list of all files in the remote folder `/path/to/folder/`
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+    return [
+        i.name
+        for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+    ]</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.sync_to_local"><code class="name flex">
+<span>def <span class="ident">sync_to_local</span></span>(<span>self, remote_folderpath: str, local_folderpath: str, overwrite: bool = False, smart_sync: bool = False, removal: bool = False) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Sync all files from a remote folder to a local folder</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_folderpath</code> (str): The path to the remote folder</li>
+<li><code>local_folderpath</code> (str): The path to the local folder</li>
+<li><code>overwrite</code> (bool): Whether to overwrite the local file if it already exists<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+<li><code>smart_sync</code> (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+<li><code>removal</code> (bool): Whether to remove local files that do not exist in the remote folder<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.sync_to_local(
+    remote_folderpath='/path/to/folder/',
+    local_folderpath='/path/to/folder/',
+    overwrite=True,
+    smart_sync=True,
+    removal=True
+)
+# This will sync the remote folder `/path/to/folder/` to the local folder `/path/to/folder/`
+# It will also remove any local files that do not exist in the remote folder
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sync_to_local(
+    self,
+    remote_folderpath: str,
+    local_folderpath: str,
+    overwrite: bool = False,
+    smart_sync: bool = False,
+    removal: bool = False,
+) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Sync all files from a remote folder to a local folder
+
+    Parameters:
+
+    - `remote_folderpath` (str): The path to the remote folder
+    - `local_folderpath` (str): The path to the local folder
+    - `overwrite` (bool): Whether to overwrite the local file if it already exists
+        - Optional: Defaults to `False`
+    - `smart_sync` (bool): Whether to skip downloading if the remote etag and md5 hash match the local meta file
+        - Optional: Defaults to `False`
+    - `removal` (bool): Whether to remove local files that do not exist in the remote folder
+        - Optional: Defaults to `False`
+
+    Returns:
+
+    - `None`
+
+    Example:
+
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.sync_to_local(
+        remote_folderpath=&#39;/path/to/folder/&#39;,
+        local_folderpath=&#39;/path/to/folder/&#39;,
+        overwrite=True,
+        smart_sync=True,
+        removal=True
+    )
+    # This will sync the remote folder `/path/to/folder/` to the local folder `/path/to/folder/`
+    # It will also remove any local files that do not exist in the remote folder
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+    validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+    blobs = [
+        i
+        for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+    ]
+    for blobProperty in blobs:
+        blob = MetaBlob(
+            blob_client=None,
+            filepath=local_folderpath
+            + blobProperty.name.replace(remote_folderpath, &#34;&#34;),
+            smart_sync=smart_sync,
+            remote_etag=blobProperty.etag,
+            overwrite=overwrite,
+        )
+        if blob.block_download:
+            continue
+        blob.blob_client = self.client.get_blob_client(
+            blob=blobProperty.name
+        )
+        blob.download()
+    if removal:
+        posix_folderpath = str(pathlib.PurePosixPath(local_folderpath))
+        if posix_folderpath == &#34;/&#34;:
+            raise Exception(&#34;Cannot do removal in the root folder&#34;)
+        storage_filepaths = set(
+            [i.name.replace(remote_folderpath, &#34;&#34;) for i in blobs]
+        )
+        for local_filepath in [
+            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        ]:
+            posix_filepath = str(pathlib.PurePosixPath(local_filepath))
+            if (
+                posix_filepath.replace(posix_folderpath, &#34;&#34;).replace(
+                    &#34;.meta.&#34;, &#34;&#34;
+                )
+                not in storage_filepaths
+            ):
+                os.remove(local_filepath)</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.sync_to_remote"><code class="name flex">
+<span>def <span class="ident">sync_to_remote</span></span>(<span>self, remote_folderpath: str, local_folderpath: str, overwrite: bool = False, omissions: list = ['.meta.']) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Sync all files from a local folder to a remote folder</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_folderpath</code> (str): The path to the remote folder</li>
+<li><code>local_folderpath</code> (str): The path to the local folder</li>
+<li><code>overwrite</code> (bool): Whether to overwrite the remote file if it already exists<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+<li><code>omissions</code> (list): A list of strings to omit from the upload<ul>
+<li>Optional: Defaults to <code>['.meta.']</code></li>
+</ul>
+</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.sync_to_remote(
+    remote_folderpath='/path/to/folder/',
+    local_folderpath='/path/to/folder/',
+)
+# This will sync the local folder `/path/to/folder/` to the remote folder `/path/to/folder/`
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sync_to_remote(
+    self,
+    remote_folderpath: str,
+    local_folderpath: str,
+    overwrite: bool = False,
+    omissions: list = [&#34;.meta.&#34;],
+) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Sync all files from a local folder to a remote folder
+
+    Parameters:
+
+    - `remote_folderpath` (str): The path to the remote folder
+    - `local_folderpath` (str): The path to the local folder
+    - `overwrite` (bool): Whether to overwrite the remote file if it already exists
+        - Optional: Defaults to `False`
+    - `omissions` (list): A list of strings to omit from the upload
+        - Optional: Defaults to `[&#39;.meta.&#39;]`
+
+    Returns:
+
+    - `None`
+
+    Example:
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.sync_to_remote(
+        remote_folderpath=&#39;/path/to/folder/&#39;,
+        local_folderpath=&#39;/path/to/folder/&#39;,
+    )
+    # This will sync the local folder `/path/to/folder/` to the remote folder `/path/to/folder/`
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=local_folderpath, is_remote=False, is_folder=True)
+    validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
+    local_filepaths = [
+        str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+    ]
+    local_filepaths = [
+        i for i in local_filepaths if not any([j in i for j in omissions])
+    ]
+    for local_filepath in local_filepaths:
+        self.upload_file(
+            remote_filepath=remote_folderpath
+            + local_filepath.replace(local_folderpath, &#34;&#34;),
+            local_filepath=local_filepath,
+            overwrite=overwrite,
+        )</code></pre>
+</details>
+</dd>
+<dt id="azure_utils.blob_storage.AZContainer.upload_file"><code class="name flex">
+<span>def <span class="ident">upload_file</span></span>(<span>self, remote_filepath: str, local_filepath: str, overwrite: bool = False) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Function:</p>
+<ul>
+<li>Uploads a file from local to remote</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>remote_filepath</code> (str): The path to the remote file</li>
+<li><code>local_filepath</code> (str): The path to the local file</li>
+<li><code>overwrite</code> (bool): Whether to overwrite the remote file if it already exists<ul>
+<li>Optional: Defaults to <code>False</code></li>
+</ul>
+</li>
+</ul>
+<p>Returns:</p>
+<ul>
+<li><code>None</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-python">from azure_utils.blob_storage import AZContainer
+mycontainer = AZContainer(
+    account_url=&quot;my_account_url&quot;,
+    account_key=&quot;my_account_key&quot;,
+    container_name=&quot;my_container&quot;
+)
+mycontainer.upload_file(
+    remote_filepath='/path/to/file.txt',
+    local_filepath='/path/to/file.txt',
+    overwrite=True
+)
+# This will upload the local file `/path/to/file.txt` to the remote file `/path/to/file.txt`
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def upload_file(
+    self, remote_filepath: str, local_filepath: str, overwrite: bool = False
+) -&gt; None:
+    &#34;&#34;&#34;
+    Function:
+
+    - Uploads a file from local to remote
+
+    Parameters:
+
+    - `remote_filepath` (str): The path to the remote file
+    - `local_filepath` (str): The path to the local file
+    - `overwrite` (bool): Whether to overwrite the remote file if it already exists
+        - Optional: Defaults to `False`
+
+    Returns:
+
+    - `None`
+
+    Example:
+
+    ```python
+    from azure_utils.blob_storage import AZContainer
+    mycontainer = AZContainer(
+        account_url=&#34;my_account_url&#34;,
+        account_key=&#34;my_account_key&#34;,
+        container_name=&#34;my_container&#34;
+    )
+    mycontainer.upload_file(
+        remote_filepath=&#39;/path/to/file.txt&#39;,
+        local_filepath=&#39;/path/to/file.txt&#39;,
+        overwrite=True
+    )
+    # This will upload the local file `/path/to/file.txt` to the remote file `/path/to/file.txt`
+    ```
+    &#34;&#34;&#34;
+    validate_path(path=local_filepath, is_remote=False, is_folder=False)
+    validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+    with open(local_filepath, &#34;rb&#34;) as data:
+        blob = MetaBlob(
+            blob_client=self.client.upload_blob(
+                name=remote_filepath, data=data, overwrite=overwrite
+            ),
+            filepath=local_filepath,
+        )
+    blob.update_meta()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="azure_utils" href="index.html">azure_utils</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="azure_utils.blob_storage.AZContainer" href="#azure_utils.blob_storage.AZContainer">AZContainer</a></code></h4>
+<ul class="two-column">
+<li><code><a title="azure_utils.blob_storage.AZContainer.clear_local_meta" href="#azure_utils.blob_storage.AZContainer.clear_local_meta">clear_local_meta</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.delete_file" href="#azure_utils.blob_storage.AZContainer.delete_file">delete_file</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.delete_folder" href="#azure_utils.blob_storage.AZContainer.delete_folder">delete_folder</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.download_file" href="#azure_utils.blob_storage.AZContainer.download_file">download_file</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.list_files" href="#azure_utils.blob_storage.AZContainer.list_files">list_files</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.sync_to_local" href="#azure_utils.blob_storage.AZContainer.sync_to_local">sync_to_local</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.sync_to_remote" href="#azure_utils.blob_storage.AZContainer.sync_to_remote">sync_to_remote</a></code></li>
+<li><code><a title="azure_utils.blob_storage.AZContainer.upload_file" href="#azure_utils.blob_storage.AZContainer.upload_file">upload_file</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
