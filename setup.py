@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 setup(
   name = 'azure_utils',
   packages = ['azure_utils', 'azure_utils.utils'],
-  version = '0.1.0',
+  version = '0.2.0',
   license='MIT',
   description = 'Azure Utilities',
   long_description=long_description,
@@ -15,7 +15,7 @@ setup(
   author = 'Connor Makowski',
   author_email = 'conmak@mit.edu',
   url = 'https://github.com/connor-makowski/azure_utils',
-  download_url = 'https://github.com/connor-makowski/azure_utils/dist/azure_utils-0.1.0.tar.gz',
+  download_url = 'https://github.com/connor-makowski/azure_utils/dist/azure_utils-0.2.0.tar.gz',
   keywords = [],
   install_requires=["azure-storage-blob>=12.17.0"],
   classifiers=[

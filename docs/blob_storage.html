@@ -33,7 +33,13 @@ from azure_utils.utils.blob_storage_utils import AZBlob, MetaBlob, validate_path
 
 
 class AZContainer:
-    def __init__(self, account_url: str, account_key: str, container_name: str):
+    def __init__(
+        self,
+        account_url: str,
+        account_key: str,
+        container_name: str,
+        show_progress: bool = False,
+    ):
         &#34;&#34;&#34;
         Function:
 
@@ -44,6 +50,7 @@ class AZContainer:
         - `account_url` (str): The account url
         - `account_key` (str): The account key
         - `container_name` (str): The container name
+        - `show_progress` (bool): Whether show progress (log files) when uploading and downloading files
 
         Returns:
 
@@ -62,6 +69,7 @@ class AZContainer:
         # This will print a list of all files in the remote folder `/path/to/folder/`
         ```
         &#34;&#34;&#34;
+        self.show_progress = show_progress
         self.client = ContainerClient(
             account_url=account_url,
             container_name=container_name,
@@ -139,6 +147,8 @@ class AZContainer:
         &#34;&#34;&#34;
         validate_path(path=local_filepath, is_remote=False, is_folder=False)
         validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        if self.show_progress:
+            print(f&#34;Uploading {local_filepath} to {remote_filepath}&#34;)
         with open(local_filepath, &#34;rb&#34;) as data:
             blob = MetaBlob(
                 blob_client=self.client.upload_blob(
@@ -193,6 +203,8 @@ class AZContainer:
         &#34;&#34;&#34;
         validate_path(path=local_filepath, is_remote=False, is_folder=False)
         validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        if self.show_progress:
+            print(f&#34;Downloading {remote_filepath} to {local_filepath}&#34;)
         blob = MetaBlob(
             blob_client=self.client.get_blob_client(blob=remote_filepath),
             filepath=local_filepath,
@@ -227,6 +239,8 @@ class AZContainer:
         ```
         &#34;&#34;&#34;
         validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        if self.show_progress:
+            print(f&#34;Deleting {remote_filepath}&#34;)
         blob = AZBlob(
             blob_client=self.client.get_blob_client(blob=remote_filepath)
         )
@@ -290,7 +304,7 @@ class AZContainer:
             blob = MetaBlob(
                 blob_client=None,
                 filepath=local_folderpath
-                + blobProperty.name.replace(remote_folderpath, &#34;&#34;),
+                + blobProperty.name.replace(remote_folderpath, &#34;&#34;, 1),
                 smart_sync=smart_sync,
                 remote_etag=blobProperty.etag,
                 overwrite=overwrite,
@@ -363,7 +377,9 @@ class AZContainer:
         validate_path(path=local_folderpath, is_remote=False, is_folder=True)
         validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
         local_filepaths = [
-            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+            str(i)
+            for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+            if i.is_file()
         ]
         local_filepaths = [
             i for i in local_filepaths if not any([j in i for j in omissions])
@@ -463,7 +479,7 @@ class AZContainer:
 <dl>
 <dt id="azure_utils.blob_storage.AZContainer"><code class="flex name class">
 <span>class <span class="ident">AZContainer</span></span>
-<span>(</span><span>account_url: str, account_key: str, container_name: str)</span>
+<span>(</span><span>account_url: str, account_key: str, container_name: str, show_progress: bool = False)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Function:</p>
@@ -475,6 +491,7 @@ class AZContainer:
 <li><code>account_url</code> (str): The account url</li>
 <li><code>account_key</code> (str): The account key</li>
 <li><code>container_name</code> (str): The container name</li>
+<li><code>show_progress</code> (bool): Whether show progress (log files) when uploading and downloading files</li>
 </ul>
 <p>Returns:</p>
 <ul>
@@ -495,7 +512,13 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class AZContainer:
-    def __init__(self, account_url: str, account_key: str, container_name: str):
+    def __init__(
+        self,
+        account_url: str,
+        account_key: str,
+        container_name: str,
+        show_progress: bool = False,
+    ):
         &#34;&#34;&#34;
         Function:
 
@@ -506,6 +529,7 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
         - `account_url` (str): The account url
         - `account_key` (str): The account key
         - `container_name` (str): The container name
+        - `show_progress` (bool): Whether show progress (log files) when uploading and downloading files
 
         Returns:
 
@@ -524,6 +548,7 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
         # This will print a list of all files in the remote folder `/path/to/folder/`
         ```
         &#34;&#34;&#34;
+        self.show_progress = show_progress
         self.client = ContainerClient(
             account_url=account_url,
             container_name=container_name,
@@ -601,6 +626,8 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
         &#34;&#34;&#34;
         validate_path(path=local_filepath, is_remote=False, is_folder=False)
         validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        if self.show_progress:
+            print(f&#34;Uploading {local_filepath} to {remote_filepath}&#34;)
         with open(local_filepath, &#34;rb&#34;) as data:
             blob = MetaBlob(
                 blob_client=self.client.upload_blob(
@@ -655,6 +682,8 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
         &#34;&#34;&#34;
         validate_path(path=local_filepath, is_remote=False, is_folder=False)
         validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        if self.show_progress:
+            print(f&#34;Downloading {remote_filepath} to {local_filepath}&#34;)
         blob = MetaBlob(
             blob_client=self.client.get_blob_client(blob=remote_filepath),
             filepath=local_filepath,
@@ -689,6 +718,8 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
         ```
         &#34;&#34;&#34;
         validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+        if self.show_progress:
+            print(f&#34;Deleting {remote_filepath}&#34;)
         blob = AZBlob(
             blob_client=self.client.get_blob_client(blob=remote_filepath)
         )
@@ -752,7 +783,7 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
             blob = MetaBlob(
                 blob_client=None,
                 filepath=local_folderpath
-                + blobProperty.name.replace(remote_folderpath, &#34;&#34;),
+                + blobProperty.name.replace(remote_folderpath, &#34;&#34;, 1),
                 smart_sync=smart_sync,
                 remote_etag=blobProperty.etag,
                 overwrite=overwrite,
@@ -825,7 +856,9 @@ print(mycontainer.list_files(remote_folderpath='/path/to/folder/')
         validate_path(path=local_folderpath, is_remote=False, is_folder=True)
         validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
         local_filepaths = [
-            str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+            str(i)
+            for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+            if i.is_file()
         ]
         local_filepaths = [
             i for i in local_filepaths if not any([j in i for j in omissions])
@@ -1043,6 +1076,8 @@ mycontainer.delete_file(remote_filepath='/path/to/file.txt')
     ```
     &#34;&#34;&#34;
     validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+    if self.show_progress:
+        print(f&#34;Deleting {remote_filepath}&#34;)
     blob = AZBlob(
         blob_client=self.client.get_blob_client(blob=remote_filepath)
     )
@@ -1204,6 +1239,8 @@ mycontainer.download_file(
     &#34;&#34;&#34;
     validate_path(path=local_filepath, is_remote=False, is_folder=False)
     validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+    if self.show_progress:
+        print(f&#34;Downloading {remote_filepath} to {local_filepath}&#34;)
     blob = MetaBlob(
         blob_client=self.client.get_blob_client(blob=remote_filepath),
         filepath=local_filepath,
@@ -1385,7 +1422,7 @@ mycontainer.sync_to_local(
         blob = MetaBlob(
             blob_client=None,
             filepath=local_folderpath
-            + blobProperty.name.replace(remote_folderpath, &#34;&#34;),
+            + blobProperty.name.replace(remote_folderpath, &#34;&#34;, 1),
             smart_sync=smart_sync,
             remote_etag=blobProperty.etag,
             overwrite=overwrite,
@@ -1501,7 +1538,9 @@ mycontainer.sync_to_remote(
     validate_path(path=local_folderpath, is_remote=False, is_folder=True)
     validate_path(path=remote_folderpath, is_remote=True, is_folder=True)
     local_filepaths = [
-        str(i) for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        str(i)
+        for i in pathlib.Path(local_folderpath).glob(&#34;**/*&#34;)
+        if i.is_file()
     ]
     local_filepaths = [
         i for i in local_filepaths if not any([j in i for j in omissions])
@@ -1592,6 +1631,8 @@ mycontainer.upload_file(
     &#34;&#34;&#34;
     validate_path(path=local_filepath, is_remote=False, is_folder=False)
     validate_path(path=remote_filepath, is_remote=True, is_folder=False)
+    if self.show_progress:
+        print(f&#34;Uploading {local_filepath} to {remote_filepath}&#34;)
     with open(local_filepath, &#34;rb&#34;) as data:
         blob = MetaBlob(
             blob_client=self.client.upload_blob(
