@@ -1,8 +1,9 @@
-autoflake==2.2.0
-black==23.7.0
+autoflake>=2.2.1
+black>=23.10.1
+build>=1.0.3
 jupyter==1.0.0
-pdoc3==0.10.0
+pdoc>=14.1.0
 python-decouple==3.8
-twine==4.0.0
-.
-
+twine>=4.0.2
+virtualenv>=20.24.6
+-e .

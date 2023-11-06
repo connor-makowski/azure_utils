@@ -5,7 +5,7 @@
 Azure Utilities for python
 
 ## Documentation
-[Technical documentation](https://connor-makowski.github.io/azure_utils/blob_storage.html) can be found [here](https://connor-makowski.github.io/azure_utils/blob_storage.html).
+[Technical documentation](https://connor-makowski.github.io/azure_utils/azure_utils/blob_storage.html) can be found [here](https://connor-makowski.github.io/azure_utils/azure_utils/blob_storage.html).
 
 ## Setup
 
