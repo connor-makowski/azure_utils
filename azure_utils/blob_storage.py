@@ -79,6 +79,7 @@ class AZContainer:
         return [
             i.name
             for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+            if i.size > 0
         ]
 
     def upload_file(
@@ -271,12 +272,13 @@ class AZContainer:
         blobs = [
             i
             for i in self.client.list_blobs(name_starts_with=remote_folderpath)
+            if i.size > 0
         ]
         for blobProperty in blobs:
             blob = MetaBlob(
                 blob_client=None,
                 filepath=local_folderpath
-                + blobProperty.name.replace(remote_folderpath, "", 1),
+                + blobProperty.name.replace(remote_folderpath, "/", 1),
                 smart_sync=smart_sync,
                 remote_etag=blobProperty.etag,
                 overwrite=overwrite,
